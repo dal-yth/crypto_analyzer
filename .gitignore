@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Scripts
+build.sh
+run.sh
+kill.sh
+all.sh
