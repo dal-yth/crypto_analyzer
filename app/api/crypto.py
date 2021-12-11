@@ -11,7 +11,9 @@ def status():
 @api.route("/gecko", methods=['GET'])
 def test_gecko():
 	req.ranged_bt_data()
-	return req.json
+	req.highest_volume()
+	req.downward_trend()
+	return req.bearish
 
 # implement calendar so user can pick date
 # should then call "gecko" route with calendar dates
