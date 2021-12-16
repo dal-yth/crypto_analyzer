@@ -1,7 +1,7 @@
 FROM python:3.10-alpine
 
 ENV FLASK_APP main.py
-ENV FLASK_CONFIG production 
+ENV FLASK_ENV production 
 
 RUN pip3 install --upgrade pip
 COPY requirements.txt .

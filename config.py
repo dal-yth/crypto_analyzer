@@ -1,4 +1,8 @@
+from dotenv import load_dotenv
 
+load_dotenv()
+
+# Main config class that is inherited by other configs
 class Config:
 	pass
 
@@ -15,10 +19,10 @@ class TestingConfig(Config):
 class ProductionConfig(Config):
     pass
 
+# Choose config based on environment variable
 config = {
     'development': DevelopmentConfig,
     'testing': TestingConfig,
     'production': ProductionConfig,
-
     'default': DevelopmentConfig
 }

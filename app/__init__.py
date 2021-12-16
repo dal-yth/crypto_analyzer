@@ -9,4 +9,7 @@ def create_app(config_name):
 	from .api import api as api_blueprint
 	app.register_blueprint(api_blueprint)
 
+	from .helpers import helpers as helpers_blueprint
+	app.register_blueprint(helpers_blueprint)
+
 	return app
