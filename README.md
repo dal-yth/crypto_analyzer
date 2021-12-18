@@ -3,8 +3,8 @@ Technical assignment for Vincit Rising Star program. Analyzes bitcoin market val
 
 ## Pre-requisites
 
-Python
-Docker
+Python > 3.7
+Docker > 20.10
 
 ## Installation
 
@@ -24,7 +24,7 @@ pip install -r requirements.txt
 Set env variables in .env:
 ```bash
 FLASK_APP=main.py
-eFLASK_ENV=development/testing/production
+FLASK_ENV=development/testing/production
 ```
 
 Run the project:
