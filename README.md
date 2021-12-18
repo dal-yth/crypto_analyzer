@@ -4,6 +4,7 @@ Technical assignment for Vincit Rising Star program. Analyzes bitcoin market val
 ## Pre-requisites
 
 Python > 3.7
+
 Docker > 20.10
 
 ## Installation
@@ -62,8 +63,11 @@ Returns the best days to buy and sell for given daterange.
 
 All endpoints take following parameters:
 id: (string) Id of the chosen coin (bitcoint etc.). Defaults to bitcoin.
+
 vs_currency: (string) Target currency of market data (usd, eur, jpy, etc.). Defaults to eur.
-from*: (string) Starting date for daterange. 
+
+from*: (string) Starting date for daterange.
+
 to*: (string) Ending date for daterange.
 
 *required field
