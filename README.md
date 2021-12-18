@@ -28,9 +28,9 @@ FLASK_ENV=development/testing/production
 ```
 
 Run the project:
-´´´bash
+```bash
 flask run
-´´´
+```
 
 ### Docker:
 
@@ -51,13 +51,13 @@ This will also be deployed to Heroku, address for that is coming later.
 
 ### API
 
-/api/bearish:
+/api/bearish\
 Returns the longest downward trend for given daterange.
 
-/api/volume
+/api/volume\
 Returns the highest volume for given daterange.
 
-/api/time_machine
+/api/time_machine\
 Returns the best days to buy and sell for given daterange.
 
 All endpoints take following parameters:
