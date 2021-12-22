@@ -7,23 +7,25 @@ from .api_request import req
 def status():
 	return jsonify({'status': 'OK'}), 200
 
-# This index route should have simple API documentation
+# This index route should have simple API documentation, or make apidoc route?
 @api.route("/")
 def index():
 	return "Hello, this is main page. It will hold simple API documentation.", 200
 
-# make sure these return coingecko errors properly when user gives wrong inputs
-@api.route("/bearish", methods=['GET'])
+@api.route("/api/downward_trend", methods=['GET'])
 def get_downward_trend():
 	req.downward_trend(request.args)
 	return req.response, req.status_code
 
-@api.route("/volume", methods=['GET'])
+@api.route("/api/volume", methods=['GET'])
 def get_highest_volume():
 	req.highest_volume(request.args)
 	return req.response, req.status_code
 
-@api.route("/time_machine", methods=['GET'])
+@api.route("/api/time_machine", methods=['GET'])
 def get_max_profits():
 	req.max_profits(request.args)
 	return req.response, req.status_code
+
+# add apidoc route and catchall route that leads to apidoc
+#api.route("/apidoc")

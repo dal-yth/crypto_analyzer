@@ -52,18 +52,33 @@ This will also be deployed to Heroku, address for that is coming later.
 ### API
 
 /api/bearish\
-Returns the longest downward trend for given daterange.
+Returns the longest downward trend for given daterange. 
 
 /api/volume\
 Returns the highest volume for given daterange.
 
 /api/time_machine\
-Returns the best days to buy and sell for given daterange.
+Returns buy_date and sell_date for given range. Returns null as days if there are no days where money could be made or if the range is less than 2 days.
 
 All endpoints take following parameters:
 id: (string) Id of the chosen coin (bitcoint etc.). Defaults to bitcoin.\
 vs_currency: (string) Target currency of market data (usd, eur, jpy, etc.). Defaults to eur.\
 from*: (string) Starting date for daterange.\
-to*: (string) Ending date for daterange.\
+to*: (string) Ending date for daterange.
 
 *required field
+
+
+### Example usage:
+
+Basic request that defaults to bitcoin and eur:
+
+/time_machine?to=2021-01-19&from=2021-05-20
+
+with other currency:
+
+/volume?vs_currency=jpy&to=2021-01-19&from=2021-05-20
+
+with other coin:
+
+/bearish?id=ethereum&vs_currency=usd&to=2021-01-19&from=2021-05-20
