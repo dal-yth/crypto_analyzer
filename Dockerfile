@@ -10,4 +10,4 @@ COPY app app
 COPY main.py config.py ./
 
 EXPOSE 5000
-CMD gunicorn main:app
+CMD gunicorn -b :5000 main:app
