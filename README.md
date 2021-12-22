@@ -41,7 +41,7 @@ docker build -t bt_analyzer .
 
 Running the image:
 ```bash
-docker run -d --name bt_analyzer bt_analyzer
+docker run -d -p 5000:5000 --name bt_analyzer bt_analyzer
 ```
 
 ## Usage

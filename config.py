@@ -5,7 +5,6 @@ load_dotenv()
 # Main config class that is inherited by other configs
 # fairly empty atm, but the point is we can easily add things to different configs
 class Config:
-	pass
 
 	@staticmethod
 	def init_app(app):
