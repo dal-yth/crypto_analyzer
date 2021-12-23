@@ -7,7 +7,7 @@ class APIRequest:
 	# check for failed status codes
 	def request_failed(self):
 		if self.status_code > 399:
-			self.response = self.json # coingecko error becomes the response
+			self.body = self.json # coingecko error becomes the response
 			return True
 		return False
 
@@ -35,7 +35,7 @@ class APIRequest:
 		if not self.fetch_and_process_data(args, "total_volumes"):
 			return
 		volumes = [x[1] for x in self.data]
-		self.response = {'highest_volume': max(volumes, default=0)}
+		self.body = {'highest_volume': max(volumes, default=0)}
 
 	# counts days where trend goes downward and keeps track of highest value
 	def downward_trend(self, args):
@@ -54,7 +54,7 @@ class APIRequest:
 				counter = 0
 		if counter > max_bearish: # in case last day was bearish
 			max_bearish = counter
-		self.response = {'downward_trend': max_bearish}
+		self.body = {'downward_trend': max_bearish}
 
 	# find max difference in bitcoin value
 	def max_profits(self, args):
@@ -71,6 +71,6 @@ class APIRequest:
 				diff = price[1] - min[1]
 				buy_date = min[0]
 				sell_date = price[0]
-		self.response = {"buy_date": from_unixtime(buy_date), "sell_date": from_unixtime(sell_date)}
+		self.body = {"buy_date": from_unixtime(buy_date), "sell_date": from_unixtime(sell_date)}
 
-req = APIRequest()
+res = APIRequest()

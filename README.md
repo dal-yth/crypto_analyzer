@@ -1,9 +1,9 @@
-# bt_analyzer
-Technical assignment for Vincit Rising Star program. Analyzes bitcoin market value for a given date range.
+# crypto_analyzer
+Technical assignment for Vincit Rising Star program. Analyzes historical cryptocurrency market data for a given date range.
 
 ## Pre-requisites
 
-Python > 3.7 \
+Python > 3.6 \
 Docker > 20.10
 
 ## Installation
@@ -36,49 +36,32 @@ flask run
 
 Building the docker image:
 ```bash
-docker build -t bt_analyzer .
+docker build -t crypto_analyzer .
 ```
 
 Running the image:
 ```bash
-docker run -d -p 5000:5000 --name bt_analyzer bt_analyzer
+docker run -d -p 5000:5000 --name crypto_analyzer crypto_analyzer
 ```
 
 ## Usage
 
-Head over to http://localhost:5000/ for the app landing page. It will have a simple description of the api endpoints.
-This will also be deployed to Heroku, address for that is coming later.
+Head over to http://localhost:5000/ to see the API documentation.
+The app is also available online at: https://crypto-analyzer.herokuapp.com/
 
-### API
+Please note that requests are limited to 50 calls/minute.
 
-/api/bearish\
-Returns the longest downward trend for given daterange. 
+### Examples:
 
-/api/volume\
-Returns the highest volume for given daterange.
-
-/api/time_machine\
-Returns buy_date and sell_date for given range. Returns null as days if there are no days where money could be made or if the range is less than 2 days.
-
-All endpoints take following parameters:
-id: (string) Id of the chosen coin (bitcoint etc.). Defaults to bitcoin.\
-vs_currency: (string) Target currency of market data (usd, eur, jpy, etc.). Defaults to eur.\
-from*: (string) Starting date for daterange.\
-to*: (string) Ending date for daterange.
-
-*required field
-
-
-### Example usage:
-
-Basic request that defaults to bitcoin and eur:
-
-/time_machine?to=2021-01-19&from=2021-05-20
-
-with other currency:
-
-/volume?vs_currency=jpy&to=2021-01-19&from=2021-05-20
-
-with other coin:
-
-/bearish?id=ethereum&vs_currency=usd&to=2021-01-19&from=2021-05-20
+Longest downward trend that defaults to bitcoin and eur:
+```bash
+/api/downward_trend?to=2021-01-19&from=2021-05-20
+```
+Highest volume with another currency (jpy):
+```bash
+/api/highest_volume?vs_currency=jpy&to=2021-01-19&from=2021-05-20
+```
+Maximum profits with another coin (ethereum):
+```bash
+/api/max_profits?id=ethereum&vs_currency=usd&to=2021-01-19&from=2021-05-20
+```

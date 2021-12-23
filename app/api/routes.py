@@ -1,31 +1,33 @@
 from . import api
-from flask import request, make_response
-from .api_request import req
+from flask import request, redirect, make_response, render_template
+from .api_request import res
 
-# maybe also check if coingecko is down?
 @api.route("/status")
 def status():
 	return make_response("OK", 200)
 
-# This index route should have simple API documentation, or make apidoc route?
-@api.route("/")
+# catch all route to redirect to documentation
+@api.route('/', defaults={'path': ''})
+@api.route('/<path:path>')
+def catch_all(path):
+	return redirect("/api/documentation")
+
+# API documentation
+@api.route("/api/documentation")
 def index():
-	return make_response("Hello, this is main page. You should head over to /api/highest_volume, /api/downward_trend and /api/time_machine", 200)
+	return render_template('index.html')
 
 @api.route("/api/downward_trend", methods=['GET'])
 def get_downward_trend():
-	req.downward_trend(request.args)
-	return make_response(req.response, req.status_code)
+	res.downward_trend(request.args)
+	return make_response(res.body, res.status_code)
 
 @api.route("/api/highest_volume", methods=['GET'])
 def get_highest_volume():
-	req.highest_volume(request.args)
-	return make_response(req.response, req.status_code)
+	res.highest_volume(request.args)
+	return make_response(res.body, res.status_code)
 
-@api.route("/api/time_machine", methods=['GET'])
+@api.route("/api/max_profits", methods=['GET'])
 def get_max_profits():
-	req.max_profits(request.args)
-	return make_response(req.response, req.status_code)
-
-# add apidoc route and catchall route that leads to apidoc
-#api.route("/apidoc")
+	res.max_profits(request.args)
+	return make_response(res.body, res.status_code)
