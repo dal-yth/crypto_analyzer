@@ -41,7 +41,7 @@ class APIRequest:
 			}
 
 	# counts days where trend goes downward and keeps track of highest value
-	# I hate it, NEED TO REFACTOR
+	# Horrible. NEED TO REFACTOR
 	def downward_trend(self, args):
 		if not self.fetch_and_process_data(args, "prices"):
 			return
@@ -74,6 +74,7 @@ class APIRequest:
 			}
 
 	# find max difference in bitcoin value
+	# also needs a refactor
 	def max_profits(self, args):
 		if not self.fetch_and_process_data(args, "prices"):
 			return
