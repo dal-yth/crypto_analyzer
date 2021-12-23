@@ -30,7 +30,7 @@ def create_params(args):
     }
     # request at least 90 days, it feels hacky, but is much easier than dealing with granularity
     if type(params["to"]) == int and type(params["from"]) == int:
-        if params["to"] > params["from"] and params["to"] - params["from"] < daily_range: # increase the range to 90 days if it's less
+        if params["to"] >= params["from"] and params["to"] - params["from"] < daily_range: # increase the range to 90 days if it's less
             params["to"] = params["from"] + daily_range
     return params
 
