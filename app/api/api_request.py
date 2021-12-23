@@ -47,6 +47,7 @@ class APIRequest:
 			return
 		max_bearish = 0
 		counter = 0
+		from_idx = 0
 		from_date = None
 		to_date = None
 		for idx, val in enumerate(self.data):
@@ -55,14 +56,16 @@ class APIRequest:
 			if val[1] < self.data[idx-1][1]:
 				counter += 1
 				if counter == 1:
-					from_date = self.data[idx-1][0]
+					from_idx = idx
 			else:
 				if counter > max_bearish: # counted more bearish days
 					max_bearish = counter
+					from_date = self.data[from_idx][0]
 					to_date = self.data[idx-1][0]
 				counter = 0
 		if counter > max_bearish: # in case last day was bearish
 			max_bearish = counter
+			from_date = self.data[from_idx][0]
 			to_date = self.data[-1][0]
 		self.body = {
 			'downward_trend': max_bearish,
