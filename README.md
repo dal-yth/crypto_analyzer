@@ -1,5 +1,5 @@
 # crypto_analyzer
-Technical assignment for Vincit Rising Star program. Analyzes historical cryptocurrency market data for a given date range.
+Technical assignment for Vincit Rising Star program. Python application that analyzes historical cryptocurrency market data for a given date range. It is served as an API with few endpoints.
 
 ## Pre-requisites
 
