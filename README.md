@@ -55,13 +55,13 @@ Please note that requests are limited to 50 calls/minute.
 
 Longest downward trend that defaults to bitcoin and eur:
 ```
-/api/downward_trend?to=2021-01-19&from=2021-05-20
+/api/downward_trend?from=2021-01-19&to=2021-05-20
 ```
 Highest volume with another currency (jpy):
 ```
-/api/highest_volume?vs_currency=jpy&to=2021-01-19&from=2021-05-20
+/api/highest_volume?vs_currency=jpy&from=2021-01-19&to=2021-05-20
 ```
 Maximum profits with another coin (ethereum):
 ```
-/api/max_profits?id=ethereum&vs_currency=usd&to=2021-01-19&from=2021-05-20
+/api/max_profits?id=ethereum&vs_currency=usd&from=2021-01-19&to=2021-05-20
 ```
