@@ -56,7 +56,7 @@ class APIRequest:
 			if val[1] < self.data[idx-1][1]:
 				counter += 1
 				if counter == 1:
-					from_idx = idx
+					from_idx = idx-1
 			else:
 				if counter > max_bearish: # counted more bearish days
 					max_bearish = counter
