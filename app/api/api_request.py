@@ -34,27 +34,41 @@ class APIRequest:
 	def highest_volume(self, args):
 		if not self.fetch_and_process_data(args, "total_volumes"):
 			return
-		volumes = [x[1] for x in self.data]
-		self.body = {'highest_volume': max(volumes, default=0)}
+		max_volume = max(self.data, key=lambda item: item[1], default=[None, None])
+		self.body = {
+			"date": from_unixtime(max_volume[0]),
+			"highest_volume": max_volume[1]
+			}
 
 	# counts days where trend goes downward and keeps track of highest value
+	# I hate it, NEED TO REFACTOR
 	def downward_trend(self, args):
 		if not self.fetch_and_process_data(args, "prices"):
 			return
 		max_bearish = 0
 		counter = 0
+		from_date = None
+		to_date = None
 		for idx, val in enumerate(self.data):
 			if idx == 0:
 				continue
 			if val[1] < self.data[idx-1][1]:
 				counter += 1
+				if counter == 1:
+					from_date = self.data[idx-1][0]
 			else:
 				if counter > max_bearish: # counted more bearish days
 					max_bearish = counter
+					to_date = self.data[idx-1][0]
 				counter = 0
 		if counter > max_bearish: # in case last day was bearish
 			max_bearish = counter
-		self.body = {'downward_trend': max_bearish}
+			to_date = self.data[-1][0]
+		self.body = {
+			'downward_trend': max_bearish,
+			'from': from_unixtime(from_date) if to_date else None,
+			'to': from_unixtime(to_date)
+			}
 
 	# find max difference in bitcoin value
 	def max_profits(self, args):
