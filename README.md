@@ -3,8 +3,8 @@ Technical assignment for Vincit Rising Star program. Python application that ana
 
 ## Pre-requisites
 
-Python > 3.6 \
-Docker > 20.10
+Python >= 3.6 \
+Docker >= 20.10
 
 ## Installation
 
